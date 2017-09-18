@@ -1,0 +1,92 @@
+@import "reset";
+
+$color_1: #003d99;
+$color_2: #794110;
+$color_3: #898E8D;
+$color_4: #0d0d0d;
+$color_5: #35352D;
+$color_pantalla: #CED0CB;
+$alto: 550px;
+$ancho: 900px;
+$borde: 7px;
+$radio: 3px;
+$borde_interno: 5px;
+
+body {
+  background: $color_1;
+}
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.marco {
+  @include centerer();
+  height: $alto;
+  width: $ancho;
+  background: $color_2;
+  border: $borde solid $color_3;
+  border-radius: $radio;
+  border-top: 0px;
+  &::after {
+    content: "";
+    width: calc(#{$ancho} - 20%);
+    height: 12%;
+    position: absolute;
+    background: $color_4;
+    left: 10%;
+    top: calc(#{$alto} + 4%);
+    border-radius: $radio;
+  }
+}
+.sombra_inferior {
+  @include centerer();
+  border-top: 30px solid darken($color_3, 35%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: calc(#{$ancho} - #{$borde});
+  top: calc(#{$alto} + 22px);
+}
+.marco_interno {
+  @include centerer();
+  background: transparent;
+  height: calc(#{$alto} - #{$borde} - #{$radio});
+  width: calc(#{$ancho} - #{$borde} - #{$radio});
+  border: $borde_interno solid $color_4;
+  border-radius: $radio;
+}
+.borde_superio {
+  width: calc(#{$ancho} - 10px);
+  height: 10px;
+  background: darken($color_2, 13%);
+  position: absolute;
+  z-index: 9;
+  left: $borde_interno;
+}
+.botones {
+  border-left: $borde_interno solid $color_4;
+  float: right;
+  height: 100%;
+  width: 25%;
+  background: darken($color_2, 5%);
+  .manijas {
+    width: calc(100% - #{$borde_interno});
+    height: 300px;
+    background: $color_5;
+    top: 100px;
+    position: relative;
+  }
+}
+.pantalla{
+  @include centerer();
+  background: $color_pantalla;
+  height: calc(#{$alto} - 10%);
+  width: calc(#{$ancho} - 30%);
+  border: $borde_interno solid $color_4;
+  border-radius: 15px;
+  left: 37.5%;
+}
