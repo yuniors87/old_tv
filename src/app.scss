@@ -2,10 +2,10 @@
 
 $color_1: #003d99;
 $color_2: #794110;
-$color_3: #898E8D;
+$color_3: #898e8d;
 $color_4: #0d0d0d;
-$color_5: #35352D;
-$color_pantalla: #CED0CB;
+$color_5: #35352d;
+$color_pantalla: #ced0cb;
 $alto: 550px;
 $ancho: 900px;
 $borde: 7px;
@@ -66,6 +66,7 @@ body {
   position: absolute;
   z-index: 9;
   left: $borde_interno;
+  border-bottom: 3px solid $color_4;
 }
 .botones {
   border-left: $borde_interno solid $color_4;
@@ -81,7 +82,7 @@ body {
     position: relative;
   }
 }
-.pantalla{
+.pantalla {
   @include centerer();
   background: $color_pantalla;
   height: calc(#{$alto} - 10%);
@@ -89,4 +90,35 @@ body {
   border: $borde_interno solid $color_4;
   border-radius: 15px;
   left: 37.5%;
+  margin-top: 3px;
+  .margen {
+    height: 95.5%;
+    background: red;
+    border-radius: 15px;
+    margin: 10px;
+  }
+}
+.screen {
+  position: relative;
+  width: calc(#{$ancho} - 400px);
+  height: calc(#{$alto} - 150px);
+  margin: 20px 0;
+  background: white;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: 0.1em;
+  z-index: 10;
+  left: 600px;
+  top: 270px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+  }
 }
